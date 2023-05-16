@@ -1,0 +1,38 @@
+LRU Cache
+A new type of Data Structure which utilizes Doubly LL and Hashmap
+
+Cache: Storage memory which reads/writes data very fast
+Disk : Slow reading of data 
+
+When client/user makes query on Cache memory for data,
+
+if(present){ //called as Cache Hit!
+    returns in O(1) time
+    // To check in O(1) time need a Hashmap with (query,NodeAddress) as key,value pair
+
+}
+else{
+    //Query on disk 
+    if(present in Disk){
+        //store in Cache 
+        //return to user
+    }
+
+    //At some point of time if Cache becomes full
+    Then Least Recently Used (LRU) item is thrown out of Cache
+}
+
+
+//Operations:
+1. insert(key,value)
+2. getValue(key)
+3. getMostRecentKey()
+
+All above 3 Operations should be O(1)
+
+Imp Property: Class should've MaxSize (size of cache)
+    * Max. no of key,value pairs inserting in cache
+    * When cache is full then the least Recently used is deleted & new is inserted
+    * If key already exists, then value of key is updated
+    
+
