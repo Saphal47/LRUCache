@@ -22,11 +22,32 @@ class LRUCache{
         unordered_map<string,list<Node>::iterator> mp;
 
     LRUCache(int maxSize){
-        this->maxSize = maxSize;
+        this->maxSize = maxSize>1 ? maxSize : 1;
     }
 
     //Three operations
     void insert(string key,int val){
+
+        //2 cases
+        if(mp.count(key) != 0){
+            //exists so replace the value in list
+            auto it = m[key] //address
+            it->val = val;
+        }
+        else{
+            //not present
+            //check cache full or not, yes remove LRU item
+            if(l.size ==maxSize){
+                Node last = l.back();
+                m.erase(last.key); //remove from the hashmap
+                l.pop_back();//remove the last ele from list
+            }
+
+            Node n(key,val);
+            l.push_front(n);
+            mp[key] = l.begin(); //l.begin() gives address of the new node
+        }
+
 
     }
 
